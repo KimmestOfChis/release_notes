@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010172341) do
+ActiveRecord::Schema.define(version: 20171010195128) do
 
   create_table "lines", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -36,7 +36,9 @@ ActiveRecord::Schema.define(version: 20171010172341) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user"
+    t.integer "line_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["line_id"], name: "index_users_on_line_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

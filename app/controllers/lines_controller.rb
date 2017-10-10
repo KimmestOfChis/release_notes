@@ -6,6 +6,7 @@ class LinesController < ApplicationController
     
     def new
         @line = Line.new
+        @user = User.new
     end
     
     def create

@@ -3,6 +3,7 @@
     <%= link_to "Report an Issue", issues_path %>
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
     <p>Signed in as <strong><%= current_user.first_name + ' ' + current_user.last_name %></strong></p>
+    <p><%= current_user.role + ' of ' + @line.find(current_user.line_id).line_name %></p>
 <% else %> 
     <%= link_to "Sign Up", new_user_registration_path %>
     <%= link_to "Log In", new_user_session_path %>

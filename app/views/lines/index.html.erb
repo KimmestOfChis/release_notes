@@ -3,14 +3,17 @@
     <%= link_to "Add New Line", new_line_path %><br>
 <% else %>
     <p>If you need a line added, please contact your scrum master</p>
+<% end %>
 
+<div>
 <% @line.each do |line| %>
     Line Name: <%= line.line_name %>|
     Line Work: <%= line.line_work %>|
     <% if current_user.role === 'Scrum Master' %>
         <%= link_to "Edit", edit_line_path(line.id) %>|
-        <%= link_to "Delete this Line", line_path(line), method: :delete, data: {confirm: 'Are you sure you want to delete this line?'} %>
+        <%= link_to "Delete this Line", line_path(line), method: :delete, data: {confirm: 'Are you sure you want to delete this line?'} %><br>
     <% end %>
 <% end %>
+</div>
 <br>
 <%= link_to "Home", root_path %>
