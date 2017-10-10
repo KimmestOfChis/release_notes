@@ -1,0 +1,15 @@
+<h1>Add new line</h1>
+
+<%= form_for @line do |f| %>
+  <div class="field">
+    <%= f.label :line_name %><br />
+    <%= f.text_field :line_name, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :line_work %><br />
+    <%= f.text_field :line_work, autofocus: true %>
+  </div>
+  
+  <%= f.submit "Add Line" %>
+<% end %>
