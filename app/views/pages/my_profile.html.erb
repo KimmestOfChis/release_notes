@@ -1,6 +1,5 @@
 <%= current_user.first_name %><br>
 <%= current_user.last_name %><br>
 <%= current_user.email %><br>
-<%= current_user.role %><br>
-<%= @line.find(current_user.line_id) %>
+<%= current_user.role + ' of ' + @line.find(current_user.line_id).line_name %><br>
 <%= link_to "Home", root_path %>
