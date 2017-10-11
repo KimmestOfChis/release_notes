@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010195128) do
+ActiveRecord::Schema.define(version: 20171010223828) do
+
+  create_table "iterations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lines", force: :cascade do |t|
     t.datetime "created_at", null: false

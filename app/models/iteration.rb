@@ -1,0 +1,2 @@
+class Iteration < ApplicationRecord
+end

@@ -40,11 +40,31 @@ class LinesController < ApplicationController
     end
     
     def destroy
+        @user = User.all
         @line = Line.find(params[:id])
         @line.destroy
+        @user.each do |user|
+            if @line.id === user.line_id
+            user.update_attribute(:line_id, nil)
+            end
+        end
         respond_to do |format|
             format.html {redirect_to lines_path, notice: "Line was removed!"}
         end
     end
-
+    
+    def add_to
+        @line = Line.find(params[:id])
+        current_user.update_attribute(:line_id, @line.id)
+        respond_to do |format|
+        format.html { redirect_to lines_path, notice: "You were successfully added to #{@line.line_name}" }
+        end
+    end
+    
+    def leave
+        @line = Line.find(params[:id])
+        current_user.update_attribute(:line_id, nil)
+        redirect_to lines_path
+        flash[:notice] = "Successfully removed from #{@line.line_name}"
+    end
 end

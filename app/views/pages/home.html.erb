@@ -2,8 +2,13 @@
     <%= link_to "My Profile", my_profile_path %>
     <%= link_to "Report an Issue", issues_path %>
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-    <p>Signed in as <strong><%= current_user.first_name + ' ' + current_user.last_name %></strong></p>
-    <p><%= current_user.role + ' of ' + @line.find(current_user.line_id).line_name %></p>
+    <% if current_user.line_id.eql? nil %>
+       <p>Signed in as <strong><%= current_user.first_name + ' ' + current_user.last_name %></strong></p>
+       <p>Be sure to join a line so you can see your team's updates</p>
+    <% else %>
+        <p>Signed in as <strong><%= current_user.first_name + ' ' + current_user.last_name %></strong></p>
+        <p><%= current_user.role + ' of ' + @line.find(current_user.line_id).line_name %></p>
+    <% end %>
 <% else %> 
     <%= link_to "Sign Up", new_user_registration_path %>
     <%= link_to "Log In", new_user_session_path %>

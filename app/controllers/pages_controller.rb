@@ -8,5 +8,6 @@ class PagesController < ApplicationController
 
   def my_profile
     @line = Line.all
+    @user = User.all
   end
 end

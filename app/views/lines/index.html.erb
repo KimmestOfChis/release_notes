@@ -1,4 +1,9 @@
 <h1>PLT Lines</h1>
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+      
 <% if current_user.role === 'Scrum Master' %>
     <%= link_to "Add New Line", new_line_path %><br>
 <% else %>
@@ -11,8 +16,15 @@
     Line Work: <%= line.line_work %>|
     <% if current_user.role === 'Scrum Master' %>
         <%= link_to "Edit", edit_line_path(line.id) %>|
-        <%= link_to "Delete this Line", line_path(line), method: :delete, data: {confirm: 'Are you sure you want to delete this line?'} %><br>
+        <%= link_to "Delete this Line", line_path(line), method: :delete, data: {confirm: 'Are you sure you want to delete this line?'} %>
     <% end %>
+    <% if current_user.line_id.eql? nil %>
+        <%= link_to "Join this line", add_to_line_path(line.id) %>
+    <% end %>
+    <% if current_user.line_id === line.id %>
+        <%= link_to "Leave this line", leave_line_path(line.id) %>
+    <% end %>
+    <br><br>
 <% end %>
 </div>
 <br>

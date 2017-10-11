@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :lines
+  resources :iterations
+  resources :lines do
+      member do
+          get 'add_to'
+          get 'leave'
+      end
+  end
   devise_for :users
  root to: 'pages#home'
  get 'issues', to: 'pages#issues'
