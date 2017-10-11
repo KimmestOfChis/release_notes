@@ -1,0 +1,18 @@
+<h1>Iteration Board</h1>
+
+<%= link_to "Add New Iteration", new_iteration_path %><br>
+
+<% @iteration.each do |i| %>
+    Iteration <%= i.iteration_number %>
+    Drop <%= i.drop_number %>
+    Date of Drop <%= i.date_of_drop.month.to_s + '/' + i.date_of_drop.day.to_s %>
+    <%= link_to "Edit", edit_iteration_path(i.id) %>
+    <% if i.date_of_drop <= @next_drop %>
+        <br>
+    <% else %>
+        <%= link_to "Delete this Iteration", iteration_path(i), method: :delete, data: {confirm: "Are you sure you want to delete this iteration?" } %>
+    <% end %>
+    <br>
+<% end %>
+
+<%= link_to "Home", root_path %>

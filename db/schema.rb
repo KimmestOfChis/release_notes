@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011133829) do
+ActiveRecord::Schema.define(version: 20171011170833) do
 
   create_table "defects", force: :cascade do |t|
     t.integer "iterations_id"

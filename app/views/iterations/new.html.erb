@@ -1,0 +1,17 @@
+<h1>Add new iteration</h1>
+
+<%= form_for @iteration do |f| %>
+    <div>
+        <%= f.label :iteration_number %>
+        <%= f.text_field :iteration_number, autofocus: true %>
+    </div>
+    <div>
+        <%= f.label :drop_number %>
+        <%= f.text_field :drop_number, autofocus: true %>
+    </div>
+     <div>
+        <%= f.label :date_of_drop %>
+        <%= f.date_select :date_of_drop, autofocus: true %>
+    </div>
+    <%= f.submit "Add New Iteration" %>
+<% end %>

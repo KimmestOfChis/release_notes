@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   def home
     @line = Line.all
+    @iteration = Iteration.all
+    @next_drop = @iteration.where('date_of_drop > ?', Date.today).order(:date_of_drop).first.date_of_drop
   end
 
   def issues
