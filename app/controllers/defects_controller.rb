@@ -1,0 +1,2 @@
+class DefectsController < ApplicationController
+end

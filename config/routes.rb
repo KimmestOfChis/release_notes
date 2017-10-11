@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  resources :interactions
   resources :iterations
+  resources :defects
   resources :lines do
       member do
           get 'add_to'

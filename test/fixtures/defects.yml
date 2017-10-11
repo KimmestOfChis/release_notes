@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  iterations: one
+  defect_no: MyString
+  rtc: MyString
+  qc: MyString
+  config: MyString
+  data_mapping_def: false
+  pc_changes_def: false
+  plugin_changes: false
+  ia_changes: false
+  db_changes_def: false
+  external_changes_def: false
+  workarounds: MyText
+
+two:
+  iterations: two
+  defect_no: MyString
+  rtc: MyString
+  qc: MyString
+  config: MyString
+  data_mapping_def: false
+  pc_changes_def: false
+  plugin_changes: false
+  ia_changes: false
+  db_changes_def: false
+  external_changes_def: false
+  workarounds: MyText
