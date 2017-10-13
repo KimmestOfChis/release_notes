@@ -1,0 +1,55 @@
+<h1>Add New Interaction</h1>
+
+<%= form_for @interaction do |f| %>
+    <%= f.label :interaction_name %>
+    <%= f.text_field :interaction_name %><br>
+    
+    <%= f.label :interface %>
+    <%= f.text_field :interface %><br>
+    
+    <%= f.label :notes_from_release %>
+    <%= f.text_field :notes_from_release %><br>
+    
+    <%= f.label :data_mapping %>
+    <%= f.check_box :data_mapping %><br>
+    
+    <%= f.label :rrc_version %>
+    <%= f.text_field :rrc_version %><br>
+    
+    <%= f.label :plt_crossline_dep %>
+    <%= f.check_box :plt_crossline_dep %><br>
+    
+    <%= f.label :plt_dep_dets %>
+    <%= f.text_field :plt_dep_dets %><br>
+    
+    <%= f.label :pc_changes %>
+    <%= f.check_box :pc_changes %><br>
+    
+    <%= f.label :pc_changes_type %>
+    <%= f.text_field :interaction_name %><br>
+    
+    <%= f.label :ia_changes %>
+    <%= f.check_box :ia_changes %><br>  
+
+    <%= f.label :ia_changes_type %>
+    <%= f.text_field :ia_changes_type %><br>
+    
+    <%= f.label :db_script %>
+    <%= f.check_box :db_script %><br>
+    
+    <%= f.label :db_changes_def %>
+    <%= f.text_field :db_script_type %><br>
+    
+    <%= f.label :external_changes %>
+    <%= f.check_box :external_changes %><br>
+    
+    <%= f.label :issues_defects %>
+    <%= f.text_field :issues_defects %><br>
+    
+    <%= f.label :workarounds %>
+    <%= f.text_field :workarounds %><br>
+    
+    <%= f.submit %>
+<% end %>
+<%= link_to "Back", interactions_path %>
+<%= link_to "Home", root_path %>

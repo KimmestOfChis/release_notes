@@ -1,0 +1,59 @@
+<%= form_for @defect do |f| %>
+  <div class="field">
+    <%= f.label :defect_no %><br/>
+    <%= f.text_field :defect_no, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :rtc %><br/>
+    <%= f.text_field :rtc, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :qc %><br />
+    <%= f.text_field :qc, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :config %><br />
+    <%= f.text_field :config, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :data_mapping_def %><br />
+    <%= f.check_box :data_mapping_def, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :pc_changes_def %><br />
+    <%= f.check_box :pc_changes_def, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :plugin_changes %><br />
+    <%= f.check_box :plugin_changes, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :ia_changes %><br />
+    <%= f.check_box :ia_changes, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :db_changes_def %><br />
+    <%= f.check_box :db_changes_def, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :external_changes_def %><br />
+    <%= f.check_box :external_changes_def, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :workarounds %><br />
+    <%= f.text_area :workarounds, autofocus: true %>
+  </div>
+  
+    <%= f.submit "Add Defect" %>
+
+<% end %>

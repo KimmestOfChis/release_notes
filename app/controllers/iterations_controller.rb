@@ -25,10 +25,10 @@ class IterationsController < ApplicationController
     end
     
     def update
-        @iteration = Iteration.find(params[:id].permit(:iteration_number, :drop_number, :date_of_drop))
+        @iteration = Iteration.find(params[:id])
         respond_to do |format|
-        if @iteration.save
-            format.html {redirect_to iteration, notice: "Iteration successfully updated!"}
+        if @iteration.update(params.require(:iteration).permit(:iteration_number, :drop_number, :date_of_drop))
+            format.html {redirect_to iterations_path, notice: "Iteration successfully updated!"}
         else
             format.html {render :new }
         end
@@ -37,6 +37,7 @@ class IterationsController < ApplicationController
     
     def show
         @iteration = Iteration.find(params[:id])
+        @defect = Defect.where("iteration_id = ?", @iteration.id)
     end
     
     def destroy
@@ -46,4 +47,5 @@ class IterationsController < ApplicationController
             format.html {redirect_to iterations_path, notice: "Iteration was removed!"}
         end
     end
+    
 end

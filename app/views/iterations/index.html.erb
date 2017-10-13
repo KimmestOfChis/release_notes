@@ -7,6 +7,7 @@
     Drop <%= i.drop_number %>
     Date of Drop <%= i.date_of_drop.month.to_s + '/' + i.date_of_drop.day.to_s %>
     <%= link_to "Edit", edit_iteration_path(i.id) %>
+    <%= link_to "View Report", iteration_path(i.id) %>
     <% if i.date_of_drop <= @next_drop %>
         <br>
     <% else %>

@@ -1,15 +1,26 @@
-<h1>Add new line</h1>
 
+<div class="col-md-12">
+  <h1>Add new line</h1>
 <%= form_for @line do |f| %>
   <div class="field">
-    <%= f.label :line_name %><br />
+    <%= f.label :line_name %><br/>
     <%= f.text_field :line_name, autofocus: true %>
   </div>
   
   <div class="field">
-    <%= f.label :line_work %><br />
+    <%= f.label :line_work %><br/>
     <%= f.text_field :line_work, autofocus: true %>
   </div>
   
-  <%= f.submit "Add Line" %>
+  <%= f.submit "Add Line",  class: "btn btn-primary" %><br>
 <% end %>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+		<div class="col-md-12">
+  <%= button_to "Back", lines_path, :method => :get, class: "btn btn-primary" %>
+  <%= button_to "Home", root_path, :method => :get, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

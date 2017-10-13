@@ -1,0 +1,22 @@
+<h1>Iteration Report</h1>
+
+    Iteration Number: <%= @iteration.iteration_number %>|
+    Drop: <%= @iteration.drop_number %>|
+    Date of Drop: <%= @iteration.date_of_drop %>| <br>
+
+<% @defect.each do |defect| %>
+    <%= defect.defect_no %>
+    <%= defect.rtc %>
+    <%= defect.qc %>
+    <%= defect.config %>
+    <%= defect.data_mapping_def %>
+    <%= defect.pc_changes_def %>
+    <%= defect.plugin_changes %>
+    <%= defect.ia_changes %>
+    <%= defect.db_changes_def %>
+    <%= defect.external_changes_def %>
+    <%= defect.workarounds %><br>
+    <% end %>
+    
+    <%= link_to "Back", iterations_path %>
+    <%= link_to "Home", root_path %>

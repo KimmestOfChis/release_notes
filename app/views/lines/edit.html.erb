@@ -1,15 +1,24 @@
-<h1>Update Line Details</h1>
-
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+        <h4 class="modal-title">Add New Line</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
 <%= form_for @line do |f| %>
   <div class="field">
-    <%= f.label :line_name %><br />
+    <%= f.label :line_name %><br/>
     <%= f.text_field :line_name, autofocus: true %>
   </div>
   
   <div class="field">
-    <%= f.label :line_work %><br />
+    <%= f.label :line_work %><br/>
     <%= f.text_field :line_work, autofocus: true %>
-  </div>
+  </div><br>
   
-  <%= f.submit "Update" %>
+  <%= f.submit "Update Line",  class: "btn btn-primary" %><br>
 <% end %>
+</div>
+</div>
+	</div>
+</div>

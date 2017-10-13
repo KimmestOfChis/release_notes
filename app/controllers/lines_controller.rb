@@ -2,6 +2,7 @@ class LinesController < ApplicationController
     
     def index
         @line = Line.all
+        @line_new = Line.new
     end
     
     def new
