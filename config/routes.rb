@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :interactions
-  resources :iterations
+  resources :iterations do
+      member do 
+          get 'new_defect'
+          post 'add_defect_create'
+      end
+  end
   resources :defects
   resources :lines do
       member do

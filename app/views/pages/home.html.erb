@@ -1,55 +1,7 @@
-<% if user_signed_in? %>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<ul class="nav nav-tabs">
-				<li>
-					<%= link_to "Lines", lines_path %>
-				</li>
-				<li>
-					<%= link_to "Defects", defects_path %>
-				</li>
-				<li>
-					<%= link_to "Iterations", iterations_path %>
-				</li>
-				<li>
-					<%= link_to "Interactions", interactions_path %>
-				</li>
-				<li class="dropdown pull-right">
-					 <a href="#" data-toggle="dropdown" class="dropdown-toggle"><%= current_user.first_name + ' ' + current_user.last_name %><strong class="caret"></strong></a>
-					<ul class="dropdown-menu">
-						<li>
-							<%= link_to "My Profile", my_profile_path %>
-						</li>
-						<li>
-							<%= link_to "Report an Issue", issues_path %>
-						</li>
-						<li class="divider">
-						</li>
-						<li>
-						    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			    <h3 class="text-center">Welcome to Release Notes.com!</h3>
-			<% else %>
-			   <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<ul class="nav nav-pills">
-				<li class="active">
-					<%= link_to "Log In", new_user_session_path %>
-				</li>
-				<li>
-					<%= link_to "Sign Up", new_user_registration_path %>
-				</li>
-			</ul>
-		</div>
-	</div>
-</div>
-<h3 class="text-center">Welcome to Release Notes.com!</h3>
-<p class="text-center">Please consider creating an account or logging in</p>
-			<% end %>
+<% unless user_signed_in? %>
+	<h3 class="text-center">Welcome to Release Notes.com!</h3>
+	<p class="text-center">Please consider creating an account or logging in</p>
+<% else %> 
+	<h3 class="text-center">Welcome to Release Notes.com!</h3>
+<% end %>
 
-			

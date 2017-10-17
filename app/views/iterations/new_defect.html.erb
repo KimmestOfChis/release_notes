@@ -1,7 +1,6 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6">
-	
       <%= form_for @defect do |f| %>
       <div class="field">
         <%= f.label :defect_no %>
@@ -46,11 +45,11 @@
         <%= f.check_box :external_changes_def %>
       </div>
         <div class="field">
-        <%= f.label :workarounds %>
-        <%= f.text_field :workarounds %>
+        <%= f.label :workarounds %><br>
+        <%= f.text_area :workarounds %>
         <%= f.hidden_field :iteration_id, value: params['iteration_id'] %>
       </div>
-      <%= f.submit "Add New Defect",  class: "btn btn-primary" %>
+      <%= f.submit "Add New Defect to Iteration #{Iteration.find(@iteration.id).iteration_number}, Drop #{Iteration.find(@iteration.id).drop_number}" ,  class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>

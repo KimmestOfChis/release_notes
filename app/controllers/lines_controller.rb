@@ -3,6 +3,7 @@ class LinesController < ApplicationController
     def index
         @line = Line.all
         @line_new = Line.new
+        #@find_line = Line.find(params[:id])
     end
     
     def new

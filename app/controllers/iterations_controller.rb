@@ -1,8 +1,10 @@
 class IterationsController < ApplicationController
     
+    
     def index
         @iteration = Iteration.all.order(:date_of_drop)
-        @next_drop = @iteration.where('date_of_drop > ?', Date.today).order(:date_of_drop).first.date_of_drop
+        @new_iteration = Iteration.new
+        #@next_drop = @iteration.where('date_of_drop > ?', Date.today).order(:date_of_drop).first.date_of_drop
     end
     
     def new
@@ -46,6 +48,16 @@ class IterationsController < ApplicationController
         respond_to do |format|
             format.html {redirect_to iterations_path, notice: "Iteration was removed!"}
         end
+    end
+    
+    def new_defect
+        @iteration = Iteration.find(params[:id])
+        @iteration_id  = @iteration.id
+        @defect = Defect.create(@iteration_id)
+    end
+   
+    def add_defect_create
+        @defect = Defect.create(@iteration_id)
     end
     
 end

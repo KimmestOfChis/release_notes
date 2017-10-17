@@ -9,7 +9,7 @@
 <% end %>
 
 <% if current_user.role === 'Scrum Master' %>
-    <%= button_to "Add New Line", '#' , :method => :get, class: "btn btn-primary", data: { toggle: "modal", target: "#newModal" } %><br>
+    <%= link_to "Add New Line", '#newModal', class: "btn btn-primary", data: { toggle: "modal", target: "#newModal" } %><br>
 <% else %>
     <p>If you need a line added, please contact your scrum master</p>
 <% end %>
@@ -27,7 +27,7 @@
               <td><%= best_in_place line, :line_name, :as => :input %></td>
               <td><%= best_in_place line, :line_work %></td>
                   <% if current_user.role === 'Scrum Master' %>
-                      <td><%= button_to "Edit Line", edit_line_path(line) , :method => :get, class: "btn btn-primary" %></td>
+                      <td><%= button_to "Edit Line", edit_line_path(line) , :method => :get, class: "btn btn-primary"  %></td>
                       <td><%= button_to "Delete Line", line_path(line), :method => :delete, class: "btn btn-danger", data: {confirm: 'Are you sure you want to delete this line?'} %></td>
                   <% end %>
                   <% if current_user.line_id.eql? nil %>
@@ -74,7 +74,6 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
- 
 
 
 </div>

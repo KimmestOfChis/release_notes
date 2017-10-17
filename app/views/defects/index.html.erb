@@ -1,4 +1,20 @@
-<h1>Defect Board</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
 
-<%= link_to "Add New Defect", new_defect_path %><br>
-<%= link_to "Home", root_path %>
+
+    <h1>Defect Board</h1>
+
+
+        <% @defect.each do |defect| %>
+            <%= defect.inspect %>
+        <% end %>
+
+    <%= link_to "Add New Defect", new_defect_path, class: "btn btn-primary" %>
+    <%= button_to "Home", root_path, :method => :get, class: "btn btn-primary" %>
+
+
+        </div>
+    </div>
+</div>
+
