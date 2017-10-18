@@ -19,7 +19,9 @@
                         <td><%= iteration.iteration_number %></td>
                         <td><%= iteration.drop_number %></td>
                         <td><%= iteration.date_of_drop.month.to_s + '/' + iteration.date_of_drop.day.to_s + '/' + iteration.date_of_drop.year.to_s %></td>
-                        <td><%= link_to "Add Defect to Iteration", new_defect_path(:iteration_id => params[:id]), class: "btn btn-primary" %></td>
+                        <td><%= link_to "Add Defect to Iteration", new_defect_iteration_path(iteration), class: "btn btn-primary" %></td>
+                        <td><%= link_to "Add Interaction to Iteration", new_interaction_iteration_path(iteration), class: "btn btn-primary" %></td>
+                        <td><%= link_to "View Iteration Release Notes", view_report_iteration_path(iteration), class: "btn btn-primary" %></td>
                     <% end %>
                 <% end %>
             </tr>

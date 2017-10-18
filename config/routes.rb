@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :iterations do
       member do 
           get 'new_defect'
-          post 'add_defect_create'
+          get 'new_interaction'
+          get 'view_report'
       end
   end
   resources :defects

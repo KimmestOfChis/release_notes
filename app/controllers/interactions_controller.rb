@@ -9,11 +9,12 @@ class InteractionsController < ApplicationController
         :data_mapping, :rrc_version, :plt_crossline_dep, :plt_dep_dets, :pc_changes, :pc_changes_type, :plugin_changes, :plug_changes_type,
         :ia_changes, :ia_changes_type, :db_script, :db_script_type, :external_changes, :external_changes_type,
         :issues_defects, :workarounds))
-        @current_drop = Iteration.where('date_of_drop > ?', Date.today).order(:date_of_drop).first.id
-        @interaction.update_attribute(:iteration_id, @current_drop)
+        @interaction.update_attribute(:iteration_id, current_user.iteration_id)
+        @interaction.update_attribute(:owner_id, current_user.id)
         respond_to do |format|
         if @interaction.save
-            format.html {redirect_to interactions_path, notice: "Interaction successfully added!"}
+            format.html {redirect_to iterations_path, notice: "Interaction successfully added!"}
+            current_user.update_attribute(:iteration_id, nil)
         else
             format.html {render :new }
         end

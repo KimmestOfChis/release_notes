@@ -4,7 +4,16 @@ class IterationsController < ApplicationController
     def index
         @iteration = Iteration.all.order(:date_of_drop)
         @new_iteration = Iteration.new
-        #@next_drop = @iteration.where('date_of_drop > ?', Date.today).order(:date_of_drop).first.date_of_drop
+        @interaction = Interaction.all
+        @defect = Defect.all
+    end
+    
+    def view_report
+        @iteration = Iteration.find_by(params[:id])
+        @interaction = Interaction.all
+        @defect = Defect.all
+        @user = User.all
+        @line = Line.all
     end
     
     def new
@@ -50,14 +59,25 @@ class IterationsController < ApplicationController
         end
     end
     
-    def new_defect
-        @iteration = Iteration.find(params[:id])
-        @iteration_id  = @iteration.id
-        @defect = Defect.create(@iteration_id)
-    end
-   
-    def add_defect_create
-        @defect = Defect.create(@iteration_id)
+    def defect_redirect
+        redirect_to new_defect_path
     end
     
+    def interaction_redirect
+        redirect_to new_interaction_path
+    end
+    
+    def new_defect
+        @iteration = Iteration.find(params[:id])
+        current_user.update_attribute(:iteration_id, @iteration.id)
+        
+        self.defect_redirect
+    end
+    
+    def new_interaction
+        @iteration = Iteration.find(params[:id])
+        current_user.update_attribute(:iteration_id, @iteration.id)
+        self.interaction_redirect
+    end
+        
 end

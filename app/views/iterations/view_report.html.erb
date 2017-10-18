@@ -1,0 +1,29 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+		  <h1><%= "Release notes for Iteration #{@iteration.iteration_number}, Drop #{@iteration.drop_number}"%></h1>
+		  <% array = [] %>
+		  <% lines = [] %>
+		  	<% @interaction.where("iteration_id = #{@iteration.id}").order('owner_id ASC').each { |owner| array << owner.owner_id } %>
+		  	<% array.uniq.each { |id| lines << @line.find(@user.find(id).line_id).id } %>
+		  	<% lines.uniq! %>
+		  		<table>
+		  			<thead>
+		  			<tr>
+		  				<% lines.each do |line| %>
+		  					<% line_name = @line.find(line).line_name %>
+		  					<% line_work = @line.find(line).line_work %>
+		  					<% scrum_master_info = @user.where(:line_id => line, :role => "Scrum Master").first %>
+		  					<% scrum_master = scrum_master_info.first_name + ' ' + scrum_master_info.last_name %>
+		  					<h3><%= "Line: #{line_name} -- #{line_work} -- Scrum Master: #{scrum_master}"%></h3>
+		  				<% end %>
+		  			</tr>
+		  			</thead>
+		  			<thead>
+		  				<td></td>
+		  			</thead>
+		  		</table>
+
+		</div>
+	</div>
+</div>
