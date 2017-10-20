@@ -1,0 +1,5 @@
+Add logic to make sure each user belongs to a line before adding a defect or interaction
+
+Add logic so that a check box field must be checked for the interaction field to appear
+
+Remove Navbar tabs for Defect and Iteration

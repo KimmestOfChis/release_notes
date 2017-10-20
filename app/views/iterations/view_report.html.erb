@@ -1,29 +1,52 @@
+<% if Iteration.all.empty? %> 
+<p>No iterations exist</p>
+<% else %>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
 		  <h1><%= "Release notes for Iteration #{@iteration.iteration_number}, Drop #{@iteration.drop_number}"%></h1>
-		  <% array = [] %>
-		  <% lines = [] %>
-		  	<% @interaction.where("iteration_id = #{@iteration.id}").order('owner_id ASC').each { |owner| array << owner.owner_id } %>
-		  	<% array.uniq.each { |id| lines << @line.find(@user.find(id).line_id).id } %>
-		  	<% lines.uniq! %>
-		  		<table>
+		  <% @interaction.order(:line_id) %>
+		  	<div class="table-responsive">
+		  		<table class="table">
 		  			<thead>
-		  			<tr>
-		  				<% lines.each do |line| %>
-		  					<% line_name = @line.find(line).line_name %>
-		  					<% line_work = @line.find(line).line_work %>
-		  					<% scrum_master_info = @user.where(:line_id => line, :role => "Scrum Master").first %>
-		  					<% scrum_master = scrum_master_info.first_name + ' ' + scrum_master_info.last_name %>
-		  					<h3><%= "Line: #{line_name} -- #{line_work} -- Scrum Master: #{scrum_master}"%></h3>
+		  				<% @interaction.each do |interaction| %>
+		  				<% line = @line.find(interaction.line_id) %>
+		  				<% scrum_master = @user.where(:line_id => interaction.line_id, :role => 'Scrum Master').first.first_name + ' ' + @user.where(:line_id => interaction.line_id, :role => 'Scrum Master').first.last_name %>
+		  				<tr>
+		  					<th><%= line.line_name + '---' +  line.line_work + '---' + "Scrum Master: #{scrum_master}" %></th>
+		  				</tr>
 		  				<% end %>
-		  			</tr>
-		  			</thead>
-		  			<thead>
-		  				<td></td>
 		  			</thead>
 		  		</table>
-
+			</div>
 		</div>
 	</div>
 </div>
+<% end %>
+<!-- 
+array = [1, 2, 3]
+
+array.each do |array|
+  puts array
+  shishka = [4, 5, 6]
+    shishka.each do |shishka|
+      puts shishka
+    end
+  end 
+
+
+Results:   
+1
+4
+5
+6
+2
+4
+5
+6
+3
+4
+5
+6
+
+-->

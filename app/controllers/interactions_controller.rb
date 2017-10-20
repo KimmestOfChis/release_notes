@@ -11,6 +11,7 @@ class InteractionsController < ApplicationController
         :issues_defects, :workarounds))
         @interaction.update_attribute(:iteration_id, current_user.iteration_id)
         @interaction.update_attribute(:owner_id, current_user.id)
+        @interaction.update_attribute(:line_id, current_user.line_id)
         respond_to do |format|
         if @interaction.save
             format.html {redirect_to iterations_path, notice: "Interaction successfully added!"}

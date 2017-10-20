@@ -30,12 +30,12 @@
         <%= f.check_box :pc_changes_def %>
       </div>
       <div class="field">
-        <%= f.label :plugin_changes %>
-        <%= f.check_box :plugin_changes %>
+        <%= f.label :plugin_changes_def %>
+        <%= f.check_box :plugin_changes_def %>
       </div>
         <div class="field">
-        <%= f.label :ia_changes %>
-        <%= f.check_box :ia_changes %>
+        <%= f.label :ia_changes_def %>
+        <%= f.check_box :ia_changes_def %>
       </div>
         <div class="field">
         <%= f.label :db_changes_def %>
@@ -48,10 +48,13 @@
         <div class="field">
         <%= f.label :workarounds %>
         <%= f.text_field :workarounds %>
-        <%= f.hidden_field :iteration_id, value: params['iteration_id'] %>
       </div>
-      <%= f.submit "Add New Defect",  class: "btn btn-primary" %>
+      <div class="field">
+        <%= f.submit "Add New Defect",  class: "btn btn-primary" %>
+      </div>
       <% end %>
+      
+      
     </div>
   </div>
 </div>

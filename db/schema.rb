@@ -10,18 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017225926) do
+ActiveRecord::Schema.define(version: 20171020004525) do
 
   create_table "defects", force: :cascade do |t|
-    t.integer "iterations_id"
     t.string "defect_no"
     t.string "rtc"
     t.string "qc"
     t.string "config"
     t.boolean "data_mapping_def"
     t.boolean "pc_changes_def"
-    t.boolean "plugin_changes"
-    t.boolean "ia_changes"
+    t.boolean "plugin_changes_def"
+    t.boolean "ia_changes_def"
     t.boolean "db_changes_def"
     t.boolean "external_changes_def"
     t.text "workarounds"
@@ -29,8 +28,9 @@ ActiveRecord::Schema.define(version: 20171017225926) do
     t.datetime "updated_at", null: false
     t.integer "iteration_id"
     t.integer "owner_id"
+    t.integer "line_id"
     t.index ["iteration_id"], name: "index_defects_on_iteration_id"
-    t.index ["iterations_id"], name: "index_defects_on_iterations_id"
+    t.index ["line_id"], name: "index_defects_on_line_id"
   end
 
   create_table "interactions", force: :cascade do |t|
@@ -57,7 +57,9 @@ ActiveRecord::Schema.define(version: 20171017225926) do
     t.datetime "updated_at", null: false
     t.integer "iteration_id"
     t.integer "owner_id"
+    t.integer "line_id"
     t.index ["iteration_id"], name: "index_interactions_on_iteration_id"
+    t.index ["line_id"], name: "index_interactions_on_line_id"
   end
 
   create_table "iterations", force: :cascade do |t|

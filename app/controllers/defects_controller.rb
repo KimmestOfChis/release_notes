@@ -16,6 +16,7 @@ class DefectsController < ApplicationController
         :workarounds))
         @defect.update_attribute(:iteration_id, current_user.iteration_id)
         @defect.update_attribute(:owner_id, current_user.id)
+        @defect.update_attribute(:line_id, current_user.line_id)
         respond_to do |format|
         if @defect.save
             format.html {redirect_to defects_path, notice: "Defect successfully added!"}
