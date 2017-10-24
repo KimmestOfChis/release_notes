@@ -1,5 +1,19 @@
-Add logic to make sure each user belongs to a line before adding a defect or interaction
+New Defect Creation should redirect to Release Notes for defects
 
-Add logic so that a check box field must be checked for the interaction field to appear
+Make release notes table cleaner (dropdown to see details)
 
-Remove Navbar tabs for Defect and Iteration
+Fix formatting of input fields for login 
+
+Fix notices
+
+Add Edit views for Interactions and Defects
+
+Add edit/delete function for Iteration
+
+Add issue reporting
+
+Disallow duplicates:    
+    -Defects
+    -Interactions
+    -Lines
+    -Iteration

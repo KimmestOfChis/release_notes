@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020004525) do
+ActiveRecord::Schema.define(version: 20171022224345) do
 
   create_table "defects", force: :cascade do |t|
     t.string "defect_no"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20171020004525) do
     t.integer "iteration_id"
     t.integer "owner_id"
     t.integer "line_id"
+    t.string "scrum_master"
+    t.string "scrum_master_surname"
     t.index ["iteration_id"], name: "index_defects_on_iteration_id"
     t.index ["line_id"], name: "index_defects_on_line_id"
   end
@@ -58,6 +60,8 @@ ActiveRecord::Schema.define(version: 20171020004525) do
     t.integer "iteration_id"
     t.integer "owner_id"
     t.integer "line_id"
+    t.string "scrum_master"
+    t.string "scrum_master_surname"
     t.index ["iteration_id"], name: "index_interactions_on_iteration_id"
     t.index ["line_id"], name: "index_interactions_on_line_id"
   end

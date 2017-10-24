@@ -37,6 +37,7 @@ gem 'simple_form', '~> 3.5'
 # gem 'capistrano-rails', group: :development
 gem 'devise', '~> 4.3'
 gem 'administrate', '~> 0.8.1'
+gem 'coffeelint', '~> 1.14'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

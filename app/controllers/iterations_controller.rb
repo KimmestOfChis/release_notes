@@ -31,10 +31,6 @@ class IterationsController < ApplicationController
         end
     end
     
-    def edit
-        @iteration = Iteration.find(params[:id])
-    end
-    
     def update
         @iteration = Iteration.find(params[:id])
         respond_to do |format|
@@ -79,5 +75,6 @@ class IterationsController < ApplicationController
         current_user.update_attribute(:iteration_id, @iteration.id)
         self.interaction_redirect
     end
+    
         
 end
