@@ -7,30 +7,26 @@
     <div class="row-fluid">
         <div class="span8 well">
             <ul class="nav nav-tabs">
-                <li class="active"> <a href="#interactions" data-target="#interactions" data-toggle="tab">Interaction Report</a>
-					
-                </li>
-                <li><a href="#defects" data-target="#defects" data-toggle="tab">Defect Report</a>
-
-                </li>
+                <li class="active"> <a href="#interactions" data-target="#interactions" data-toggle="tab">Interaction Report</a></li>
+                <li><a href="#defects" data-target="#defects" data-toggle="tab">Defect Report</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active fade in" id="interactions">
                 		<div class="table-responsive">
 		  		<table class="table table-striped table-hover">
 		  		    <% @line.each do |line| %>
-		  		    <thead>
-		  		        <tr class="active">
-		  		        	<th colspan="2"><%= line.line_name %></th>
-		  		       		<th colspan="2"><%= line.line_work %></th>
+		  		    <thead class="bg-primary">
+		  		        <tr>
+		  		        	<th colspan="5"><%= line.line_name %></th>
+		  		       		<th colspan="5"><%= line.line_work %></th>
 		  		        	<th colspan="7">Scrum Master: <%= @user.where(:line_id => line.id, :role => 'Scrum Master').first.first_name + ' ' + @user.where(:line_id => line.id, :role => 'Scrum Master').first.last_name unless  @user.where(:line_id => line.id, :role => 'Scrum Master').first === nil %></th>
 		  		        </tr>
 		  		    </thead>
 		  		    <thead>
 		  		        <tr>
+		  		        	<th></th>
 		  		            <th>Interaction Name</th>
 		  		            <th>Interface</th>
-		  		            <th>Notes from Release</th>
 		  		            <th>RRC Version</th>
 		  		            <th>Data Mapping?</th>
 		  		            <th>PLT Crossline Dependency?</th>
@@ -39,15 +35,19 @@
 		  		            <th>IA Changes?</th>
 		  		            <th>DB Script Changes?</th>
 		  		            <th>External Changes?</th>
+		  		            <th>Added By</th>
 		  		        </tr>
 		  		    </thead>
 		  		       <tbody>
 		  		           <% @interaction.each do |interaction| %>
 		  		               <% if interaction.line_id === line.id %>
 		  		           <tr>
+		  		           	  <% button_id = "see_details_for_interaction_id_" + interaction.id.to_s %>
+		  		           	  <% table_head = "table_head_" + interaction.id.to_s %>
+		  		           	  <% table_set =  "table_set_" + interaction.id.to_s %>
+		  		           	  <td><%= link_to 'See Details', interaction_path(interaction), class: "btn btn-primary" %></td>
 		  		              <td><%= interaction.interaction_name  %></td>
 		  		              <td><%= interaction.interface %></td>
-		  		              <td><%= interaction.notes_from_release %></td>
 		  		              <td><%= interaction.rrc_version %></td>
 		  		              <td><%= interaction.data_mapping ? 'yes' : 'no' %></td>
 		  		              <td><%= interaction.plt_crossline_dep ? 'yes' : 'no' %></td>
@@ -56,31 +56,15 @@
 		  		              <td><%= interaction.ia_changes ? 'yes' : 'no' %></td>
 		  		              <td><%= interaction.db_script ? 'yes' : 'no' %></td>
 		  		              <td><%= interaction.external_changes ? 'yes' : 'no' %></td>
+		  		              <% user = @user.find(interaction.owner_id) unless interaction.nil? %>
+		  		              <td><%= user.first_name + ' ' + user.last_name %></td>
 		  		              <% if current_user.id === interaction.owner_id %>
-		  		                  <td><%= link_to "Edit This Interaction", edit_interaction_path(interaction), class: "btn btn-primary" %></td>
-		  		                  <td><%= link_to "Delete This Interaction", interaction_path(interaction), :method => :delete, class: "btn btn-danger" %></td>
+		  		                  <td><%= link_to "Edit", edit_interaction_path(interaction), class: "btn btn-primary" %></td>
+		  		                  <td><%= link_to "Delete", interaction_path(interaction), :method => :delete, class: "btn btn-danger" %></td>
 		  		               <% end %>
 		  		           </tr> 
-		  		           <tr>
-		  		           		<th colspan="2">PLT Crossline Dependencies Details</th>
-		  		           		<th colspan="2">PC Changes Details</th>
-		  		           		<th colspan="2">Plug-in Changes Details</th>
-		  		           		<th colspan="1">IA Changes Details</th>
-		  		           		<th>DB Script Changes Details</th>
-		  		           		<th>External Changes Details</th>
-		  		           		<th>Known Issues</th>
-		  		           		<th>Workarounds</th>
-		  		           </tr>
-		  		           <tr>
-		  		           		<td colspan="2"><%= interaction.plt_dep_dets %></td>
-		  		           		<td colspan="2"><%= interaction.pc_changes_type %></td>
-		  		           		<td colspan="2"><%= interaction.plug_changes_type %></td>
-		  		           		<td colspan="1"><%= interaction.ia_changes_type %></td>
-		  		           		<td><%= interaction.db_script_type %></td>
-		  		           		<td><%= interaction.external_changes_type %></td>
-		  		           		<td><%= interaction.issues_defects %></td>
-		  		           		<td><%= interaction.workarounds %></td>
-		  		           </tr>
+		  		       
+		  		           </div>
 		  		             <% end %>
 		  		       </tbody>
 		  		       <% end %>
@@ -92,10 +76,10 @@
                 <div class="table-responsive">
 		  		<table class="table table-striped table-hover">
 		  			<% @line.each do |line| %>
-		  		    <thead>
-		  		        <tr class="active">
-		  		        	<th colspan="2"><%= line.line_name %></th>
-		  		       		<th colspan="2"><%= line.line_work %></th>
+		  		    <thead class="bg-primary">
+		  		        <tr>
+		  		        	<th colspan="5"><%= line.line_name %></th>
+		  		       		<th colspan="5"><%= line.line_work %></th>
 		  		        	<th colspan="7">Scrum Master: <%= @user.where(:line_id => line.id, :role => 'Scrum Master').first.first_name + ' ' + @user.where(:line_id => line.id, :role => 'Scrum Master').first.last_name unless  @user.where(:line_id => line.id, :role => 'Scrum Master').first === nil %></th>
 		  		        </tr>
 		  		    </thead>
@@ -114,8 +98,9 @@
 		  		            <th>Workarounds</th>
 		  		        </tr>
 		  		    </thead> 
-		  		    <tr>
+		  		    <tbody>
 		  		    	<% @defect.each do |defect| %>
+		  		    <tr>
 		  		    	<% if defect.line_id === line.id %>
 		  		    		<td><%= defect.defect_no %></td>
 		  		    		<td><%= defect.rtc %></td>
@@ -128,13 +113,16 @@
 		  		    		<td><%= defect.db_changes_def ? 'yes' : 'no' %></td>
 		  		    		<td><%= defect.external_changes_def ? 'yes' : 'no' %></td>
 		  		    		<td><%= defect.workarounds %></td>
+		  		    		<% user = @user.find(defect.owner_id) unless defect.nil? %>
+		  		              <td><%= user.first_name + ' ' + user.last_name %></td>
 		  		    		<% if current_user.id === defect.owner_id %>
-		  		                  <td><%= link_to "Edit This Defect", edit_defect_path(defect), class: "btn btn-primary" %></td>
-		  		                  <td><%= link_to "Delete This Defect", defect_path(defect), :method => :delete, class: "btn btn-danger" %></td>
+		  		                  <td><%= link_to "Edit", edit_defect_path(defect), class: "btn btn-primary" %></td>
+		  		                  <td><%= link_to "Delete", defect_path(defect), :method => :delete, class: "btn btn-danger" %></td>
 		  		               <% end %>
 		  		    	<% end %>
 		  		    	<% end %>
 		  		    </tr>
+		  		    </tbody>
 		  			<% end %>
 		  		</table>
 		  		</div>

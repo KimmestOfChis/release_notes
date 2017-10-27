@@ -21,7 +21,7 @@ class DefectsController < ApplicationController
         @defect.update_attribute(:scrum_master_surname, User.where(:line_id => current_user.line_id, :role => 'Scrum Master').first.last_name)
         respond_to do |format|
         if @defect.save
-            format.html {redirect_to defects_path, notice: "Defect successfully added!"}
+            format.html {redirect_to iterations_path, notice: "Defect successfully added!"}
             current_user.update_attribute(:iteration_id, nil)
         else
             format.html {render :new }
@@ -34,9 +34,9 @@ class DefectsController < ApplicationController
     end
     
      def update
-        @defect = defect.find(params[:id])
+        @defect = Defect.find(params[:id])
         respond_to do |format|
-        if @iteration.update(params.require(:defect).permit(:defect_no, :rtc, :qc, :config, :data_mapping_def,
+        if @defect.update(params.require(:defect).permit(:defect_no, :rtc, :qc, :config, :data_mapping_def,
             :pc_changes_def, :plugin_changes_def, :ia_changes_def, :db_changes_def, :external_changes_def, :workarounds))
             format.html {redirect_to iterations_path, notice: "Iteration successfully updated!"}
         else
@@ -50,7 +50,7 @@ class DefectsController < ApplicationController
         @defect = Defect.find(params[:id])
         @defect.destroy
         respond_to do |format|
-            format.html {redirect_to iterations_path, notice: "Defect was removed!"}
+            format.html {redirect_to view_report_iteration_path(@defect.iteration_id), notice: "Defect was removed!"}
         end
     end
     

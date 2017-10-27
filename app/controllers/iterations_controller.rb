@@ -9,9 +9,9 @@ class IterationsController < ApplicationController
     end
     
     def view_report
-        @iteration = Iteration.find_by(params[:id])
-        @interaction = Interaction.all
-        @defect = Defect.all
+        @iteration = Iteration.find(params[:id])
+        @interaction = Interaction.where(:iteration_id => @iteration.id)
+        @defect = Defect.where(:iteration_id => @iteration.id)
         @user = User.all
         @line = Line.all
     end

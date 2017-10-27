@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Workspace</title>
+    <title>Release Notes.com</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,7 +9,6 @@
   </head>
 
   <body>
-    <div id="modal-holder"></div>
     <% if user_signed_in? %>
 <div class="container-fluid">
 	<div class="row">
@@ -53,10 +52,15 @@
 					<%= link_to "Sign Up", new_user_registration_path %>
 				</li>
 			</ul>
+			<% end %>
 		</div>
 	</div>
 </div>
-			<% end %>
+		<div class="col-md-12">
+		<% if flash[:notice] %>
+    		<div class="notice"><%= flash[:notice] %></div>
+		<% end %>
+		</div>	
     <%= yield %>
   
   </body>

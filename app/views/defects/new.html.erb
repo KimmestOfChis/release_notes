@@ -1,64 +1,62 @@
 <div class="container-fluid">
+  <%= form_for @defect do |f| %>
+	  <h1>Add New Defect</h1>
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-4"><!-- closed --->
 	
-      <%= form_for @defect do |f| %>
       <div class="field">
         <%= f.label :defect_no, "Defect Number" %><br>
         <%= f.text_field :defect_no %>
-      </div>
+      </div><!-- closed --->
       <div class="field">
         <%= f.label :rtc, "RTC Number" %><br>
         <%= f.text_field :rtc %>
-      </div>
+      </div><!-- closed --->
       <div class="field">
         <%= f.label :qc, "Quality Center Info" %><br>
         <%= f.text_field :qc %>
-      </div>
+      </div><!-- closed --->
       <div class="field">
         <%= f.label :config, "Configuration" %><br>
         <%= f.text_field :config %>
-      </div>
-    </div>
-    <div class="col-md-4">
+      </div><!-- closed --->
+    </div><!-- closed --->
+    <div class="col-md-4"><!-- closed --->
       <div class="field">
         <%= f.label :data_mapping_def, "Data Mapping Needed?" %>
         <%= f.check_box :data_mapping_def %>
-      </div>
+      </div><!-- closed --->
       <div class="field">
         <%= f.label :pc_changes_def, "PC Changes Needed?" %>
         <%= f.check_box :pc_changes_def %>
-      </div>
+      </div><!-- closed --->
       <div class="field">
         <%= f.label :plugin_changes_def, "Plug-in Changes Needed?" %>
         <%= f.check_box :plugin_changes_def %>
-      </div>
+      </div><!-- closed --->
         <div class="field">
         <%= f.label :ia_changes_def, "IA Changes Needed?" %>
         <%= f.check_box :ia_changes_def %>
-      </div>
+      </div><!-- closed --->
         <div class="field">
         <%= f.label :db_changes_def, "DB Script Changes Needed?" %>
         <%= f.check_box :db_changes_def %>
-      </div>
+      </div><!-- closed --->
         <div class="field">
         <%= f.label :external_changes_def, "External Changes Needed?" %>
         <%= f.check_box :external_changes_def %>
-      </div>
-      </div>
+      </div><!-- closed --->
+      </div><!-- closed --->
       <div class="col-md-4">
         <div class="field">
         <%= f.label :workarounds %><br>
         <%= f.text_area :workarounds, cols: "25", rows: "5"  %>
-      </div>
+      </div><!-- closed --->
       
       <div class="field">
         <%= f.submit "Add New Defect",  class: "btn btn-primary" %>
-      </div>
+      </div><!-- closed --->
+      </div><!-- closed --->
       <% end %>
-      </div>
-      
-      
-    </div>
-  </div>
-</div>
+  </div><!-- closed --->
+</div><!-- closed --->

@@ -4,7 +4,7 @@ class InteractionsController < ApplicationController
         @interaction = Interaction.new
     end
     
-     def create
+    def create
         @interaction = Interaction.new(params.require(:interaction).permit(:interaction_name, :interface, :notes_from_release,
         :data_mapping, :rrc_version, :plt_crossline_dep, :plt_dep_dets, :pc_changes, :pc_changes_type, :plugin_changes, :plug_changes_type,
         :ia_changes, :ia_changes_type, :db_script, :db_script_type, :external_changes, :external_changes_type,
@@ -28,7 +28,7 @@ class InteractionsController < ApplicationController
         @interaction = Interaction.find(params[:id])
     end
     
-      def update
+    def update
         @interaction = Interaction.find(params[:id])
         respond_to do |format|
         if @interaction.update(params.require(:interaction).permit(:interaction_name, :interface, :notes_from_release,
@@ -46,8 +46,11 @@ class InteractionsController < ApplicationController
         @interaction = Interaction.find(params[:id])
         @interaction.destroy
         respond_to do |format|
-            format.html {redirect_to view_report_iteration_path, notice: "Interaction was removed!"}
+            format.html {redirect_to view_report_iteration_path(@interaction.iteration_id), notice: "Interaction was removed!"}
         end
     end
     
+    def show
+        @interaction = Interaction.find(params[:id])
+    end
 end

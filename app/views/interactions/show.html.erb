@@ -1,0 +1,80 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+		    <h1>Interaction Report for <strong><%= @interaction.interaction_name %></strong></h1>
+		    <%= link_to "Back to Release Notes Reports", view_report_iteration_path(@interaction.iteration_id), class: "btn btn-primary" %>
+		       <table class="table table-striped table-hover">
+		           <thead>
+		               <tr>
+		  		            <th>Interface</th>
+		  		            <th>RRC Version</th>
+		  		            <th>Data Mapping?</th>
+		  		            <th>PLT Crossline Dependency?</th>
+		  		            <th>PC Changes?</th>
+		  		            <th>Plug-in Changes?</th>
+		  		            <th>IA Changes?</th>
+		  		            <th>DB Script Changes?</th>
+		  		            <th>External Changes?</th>
+		               </tr>
+		           </thead>
+		           <tbody>
+		               <tr>
+		                   <td><%= @interaction.interface %></td>
+		  		           <td><%= @interaction.rrc_version %></td>
+		  		           <td><%= @interaction.data_mapping ? 'yes' : 'no' %></td>
+		  		           <td><%= @interaction.plt_crossline_dep ? 'yes' : 'no' %></td>
+		  		           <td><%= @interaction.pc_changes ? 'yes' : 'no' %></td>
+		  		           <td><%= @interaction.plugin_changes ? 'yes' : 'no' %></td>
+		  		           <td><%= @interaction.ia_changes ? 'yes' : 'no' %></td>
+		  		           <td><%= @interaction.db_script ? 'yes' : 'no' %></td>
+		  		           <td><%= @interaction.external_changes ? 'yes' : 'no' %></td>
+		               </tr>
+		           </tbody>
+		       </table>
+		    </div>
+        </div>
+		    
+		    <div class="row">
+		<div class="col-md-12">
+		    <table class="table table-striped table-hover">
+		        <thead>
+		            <tr>
+		                <th>Notes from Release</th>
+		  		        <th>PLT Crossline Dependencies Details</th>
+		  		        <th>PC Changes Details</th>
+		  		        <th>Plug-in Changes Details</th>
+		  		        <th>IA Changes Details</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr>
+		                <td><%= @interaction.plt_dep_dets%></td>
+		                <td><%= @interaction.pc_changes_type%></td>
+		                <td><%= @interaction.plug_changes_type%></td>
+		                <td><%= @interaction.ia_changes_type%></td>
+		            </tr>
+		        </tbody>
+		    </table>
+        </div>
+	</div>
+	 <div class="row">
+		<div class="col-md-12">
+		    <table class="table table-striped table-hover">
+		        <thead>
+		            <th>DB Script Changes Details</th>
+		  		    <th>External Changes Details</th>
+		  		    <th>Known Issues</th>
+		  		    <th>Workarounds</th>
+		        </thead>
+		        <tbody>
+		            <tr>
+		                <td><%= @interaction.db_script_type %></td>
+		                <td><%= @interaction.external_changes_type %></td>
+		                <td><%= @interaction.issues_defects %></td>
+		                <td><%= @interaction.workarounds %></td>
+		            </tr>
+		        </tbody>
+		    </table>
+	    </div>
+	</div>
+</div>

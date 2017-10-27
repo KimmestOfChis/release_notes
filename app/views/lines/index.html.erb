@@ -4,10 +4,6 @@
 
 <h1>PLT Lines</h1>
 
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
 <% if current_user.role === 'Scrum Master' %>
     <%= link_to "Add New Line", '#newModal', class: "btn btn-primary", data: { toggle: "modal", target: "#newModal" } %><br>
 <% else %>
@@ -41,41 +37,38 @@
           </tbody>
         </table>
         
+      </div>
+	  </div>
+  </div>
         
-        
-        <%= button_to "Home", root_path, :method => :get, class: "btn btn-primary" %>
-         <div class="modal fade" id="newModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+         <div class="modal fade" id="newModal"><!-- closed --->
+  <div class="modal-dialog"><!-- closed --->
+    <div class="modal-content"><!-- closed --->
+      <div class="modal-header"><!-- closed --->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Add New Line</h4>
-      </div>
-      <div class="modal-body">
-        <div class="col-md-12">
-            <%= form_for @line_new do |f| %>
-              <div class="field">
+      </div><!-- closed --->
+        <%= form_for @line_new do |f| %>
+      <div class="modal-body"><!-- closed --->
+        <div class="col-md-12"><!-- closed --->
+            
+              <div class="field"><!-- closed --->
                 <%= f.label :line_name %><br/>
                 <%= f.text_field :line_name, autofocus: true %>
-              </div>
+              </div><!-- closed --->
   
-              <div class="field">
+              <div class="field"><!-- closed --->
                 <%= f.label :line_work %><br/>
                 <%= f.text_field :line_work, autofocus: true %>
-              </div>
+              </div><!-- closed --->
   
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div><!-- closed --->
+          </div><!-- closed --->
+      <div class="modal-footer"><!-- closed --->
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
          <%= f.submit "Add Line",  class: "btn btn-primary" %>
         <% end %>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-</div>
-	</div>
-</div>
+      </div><!-- closed --->
+    </div><!-- /.modal-content --><!-- closed --->
+  </div><!-- /.modal-dialog --><!-- closed --->
+</div><!-- /.modal --><!-- closed --->

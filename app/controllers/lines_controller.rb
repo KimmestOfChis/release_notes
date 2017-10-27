@@ -30,7 +30,7 @@ class LinesController < ApplicationController
         @line = Line.find(params[:id])
         respond_to do |format|
             if @line.update(params.require(:line).permit(:line_name, :line_work))
-                format.html {redirect_to line_path, notice: 'Line was successfully updated' }
+                format.html {redirect_to lines_path, notice: 'Line was successfully updated' }
             else
                 format.html { render :edit }
             end

@@ -1,8 +1,9 @@
-<h1>Edit Interaction</h1>
 <div class="container-fluid">
+    <%= form_for @interaction do |f| %>
+    <h1>Edit Interaction</h1>
 	<div class="row">
 		<div class="col-md-4">
-<%= form_for @interaction do |f| %>
+
     <%= f.label :interaction_name, "Interaction Name" %><br>
     <%= f.text_field :interaction_name %><br>
     
@@ -85,8 +86,7 @@
     
     <%= f.submit "Edit Interaction", class: 'btn btn-primary' %>
 <% end %>
-<%= link_to "Back", interactions_path %>
-<%= link_to "Home", root_path %>
+<%= link_to "Back", iterations_path, class: 'btn btn-primary' %>
 	</div>
 </div>
 </div>
