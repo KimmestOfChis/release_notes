@@ -1,14 +1,28 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			 <span class="label label-default">Name</span><%= ' ' + current_user.first_name + ' ' + current_user.last_name%><br>
-			 <span class="label label-default">Email</span><%= ' ' + current_user.email %><br> 
-			 <span class="label label-default">Role</span> <%= ' ' + current_user.role %><br>
-			 <% if current_user.line_id.eql? nil %>
-			     <p>You do not currently belong to a line. <%= link_to "Join one here", '#', data: { toggle: "modal", target: "#myModal" } %></p>
-			 <% else %>
-			     <span class="label label-default">Line</span><%= ' ' + @line.find(current_user.line_id).line_name %>
-			 <% end %>
+			 <table class="table">
+			   <tr>
+			     <thead>
+			     <th>Name</th>
+			     <th>Email</th>
+			     <th>Your Role</th>
+			     <th>Line</th>
+			     </thead>
+			   </tr>
+			   <tr>
+			     <tbody>
+			       <td><%= current_user.first_name + ' ' + current_user.last_name %></td>
+			       <td><%= current_user.email %></td>
+			       <td><%= current_user.role %></td>
+			     <% if current_user.line_id.eql? nil %>
+			       <td>You do not currently belong to a line. <%= link_to "Join one here", '#', data: { toggle: "modal", target: "#myModal" } %></td>
+			     <% else %>
+			       <td><%=  @line.find(current_user.line_id).line_name %></td>
+			     <% end %>
+			 </tbody>
+			 </tr>
+			 </table>
 		</div>
 	</div>
 </div>

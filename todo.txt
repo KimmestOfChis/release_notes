@@ -4,8 +4,6 @@ Users should be logged in to add Iteration, defect, or interaction
 
 New Defect Creation should redirect to Release Notes for defects
 
-Add Edit views for Defects
-
 Add issue reporting
 
 Disallow duplicates:    

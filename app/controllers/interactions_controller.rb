@@ -46,7 +46,7 @@ class InteractionsController < ApplicationController
         @interaction = Interaction.find(params[:id])
         @interaction.destroy
         respond_to do |format|
-            format.html {redirect_to view_report_iteration_path(@interaction.iteration_id), notice: "Interaction was removed!"}
+            format.html {redirect_to view_report_iteration_path(@interaction.iteration_id), notice: "Interaction removed!"}
         end
     end
     
