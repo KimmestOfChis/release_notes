@@ -4,6 +4,7 @@ class LinesController < ApplicationController
         @line = Line.all
         @line_new = Line.new
         #@find_line = Line.find(params[:id])
+        @user = User.all
     end
     
     def new
@@ -17,7 +18,7 @@ class LinesController < ApplicationController
         if @line.save
             format.html {redirect_to lines_path, notice: "Line successfully added!"}
         else
-            format.html {render :new }
+            format.html {redirect_to lines_path, notice: "Line already exists!" }
         end
         end
     end

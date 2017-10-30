@@ -6,15 +6,13 @@ New Defect Creation should redirect to Release Notes for defects
 
 Add Edit views for Defects
 
-Add edit/delete function for Iteration
-
 Add issue reporting
 
 Disallow duplicates:    
-    -Defects
-    -Interactions
-    -Lines
-    -Line Scrum Master
     -Iteration
 
+Add copy function to another iteration 
+
 Add instructions on home page
+
+Fix formatting for Show view of interaction report

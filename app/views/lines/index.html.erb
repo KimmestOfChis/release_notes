@@ -15,22 +15,32 @@
             <tr>
               <th>Line</th>
               <th>Work</th>
+              <th>Scrum Master</th>
             </tr>
           </thead>
           <tbody>
             <% @line.each do |line| %>
-             <tr class="<%= 'success' if current_user.line_id === line.id%>">
+             <tr class="<%= 'success' if current_user.line_id === line.id %>">
               <td><%= best_in_place line, :line_name, :as => :input %></td>
               <td><%= best_in_place line, :line_work %></td>
+              <% if current_user.line_id === line.id && current_user.role === 'Scrum Master' %>
+                <td>You</td>
+              <% elsif @user.where(:line_id => line.id, :role => 'Scrum Master').exists? %>
+                <td><%= @user.where(:line_id => line.id, :role => 'Scrum Master').first.first_name + ' ' + @user.where(:line_id => line.id, :role => 'Scrum Master').first.last_name %></td>
+              <% else %>
+                <td></td>  
+              <% end %>
                   <% if current_user.role === 'Scrum Master' %>
                       <td><%= button_to "Edit Line", edit_line_path(line) , :method => :get, class: "btn btn-primary"  %></td>
                       <td><%= button_to "Delete Line", line_path(line), :method => :delete, class: "btn btn-danger", data: {confirm: 'Are you sure you want to delete this line?'} %></td>
                   <% end %>
-                  <% if current_user.line_id.eql? nil %>
-                      <td><%= button_to "Join Line", add_to_line_path(line.id), :method => :get, class: "btn btn-primary" %></td>
-                  <% end %>
                   <% if current_user.line_id === line.id %>
                       <td><%= button_to "Leave Line", leave_line_path(line.id), :method => :get, class: "btn btn-danger" %></td>
+                  <% end %>
+                  <% if current_user.line_id.nil? && @user.where(:line_id => line.id, :role => 'Scrum Master').exists? %>
+                      <td></td>
+                  <% elsif current_user.line_id.nil? %>
+                      <td><%= button_to "Join Line", add_to_line_path(line.id), :method => :get, class: "btn btn-primary" %></td>
                   <% end %>
               </tr>
             <% end %>

@@ -31,6 +31,10 @@ class IterationsController < ApplicationController
         end
     end
     
+    def edit
+        @iteration = Iteration.find(params[:id])
+    end
+    
     def update
         @iteration = Iteration.find(params[:id])
         respond_to do |format|
