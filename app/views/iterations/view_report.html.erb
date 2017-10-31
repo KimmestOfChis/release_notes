@@ -62,6 +62,7 @@
 		  		                  <td><%= link_to "Edit", edit_interaction_path(interaction), class: "btn btn-primary" %></td>
 		  		                  <td><%= link_to "Delete", interaction_path(interaction), :method => :delete, class: "btn btn-danger" %></td>
 		  		               <% end %>
+		  		             <td><%= link_to "Clone to another iteration", '#cloneModal', class: "btn btn-primary",  data: { toggle: "modal", target: "#cloneModal" }  %></td>
 		  		           </tr> 
 		  		       
 		  		           </div>
@@ -120,6 +121,7 @@
 		  		                  <td><%= link_to "Edit", edit_defect_path(defect), class: "btn btn-primary" %></td>
 		  		                  <td><%= link_to "Delete", defect_path(defect), :method => :delete, class: "btn btn-danger" %></td>
 		  		               <% end %>
+		  		           	<td><%= link_to "Clone to another iteration", clone_defect_iteration_path(defect), class: "btn btn-primary" %></td>
 		  		    	<% end %>
 		  		    	<% end %>
 		  		    </tr>
@@ -138,3 +140,4 @@
 		</div>
 	</div>
 </div>
+

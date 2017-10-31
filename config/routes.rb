@@ -5,6 +5,7 @@ Rails.application.routes.draw do
           get 'new_defect'
           get 'new_interaction'
           get 'view_report'
+          get 'clone_defect'
       end
   end
   resources :defects

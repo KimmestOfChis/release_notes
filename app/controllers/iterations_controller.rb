@@ -14,6 +14,7 @@ class IterationsController < ApplicationController
         @defect = Defect.where(:iteration_id => @iteration.id)
         @user = User.all
         @line = Line.all
+        @all_iterations = Iteration.all
     end
     
     def new
@@ -78,6 +79,11 @@ class IterationsController < ApplicationController
         @iteration = Iteration.find(params[:id])
         current_user.update_attribute(:iteration_id, @iteration.id)
         self.interaction_redirect
+    end
+    
+    def clone_defect
+        @defect = Defect.find(params[:id])
+    
     end
     
         
