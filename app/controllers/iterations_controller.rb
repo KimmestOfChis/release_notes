@@ -82,9 +82,40 @@ class IterationsController < ApplicationController
     end
     
     def clone_defect
-        @defect = Defect.find(params[:id])
-    
+        @@defect = Defect.find(params[:id])
+        @iteration = Iteration.all
     end
     
-        
+    def submit_clone
+        @defect = @@defect
+        @iteration = Iteration.find(params[:id])
+        @newfect = @defect.dup
+        @newfect.update_attribute(:iteration_id, @iteration.id)
+        respond_to do |format|
+        if @newfect.save
+            format.html {redirect_to view_report_iteration_path(@iteration.id), notice: "#{@newfect.defect_no} copied to Iteration #{@iteration.iteration_number}, Drop #{@iteration.drop_number} "}
+        else
+            format.html {render :new }
+        end
+        end
+    end
+    
+    def clone_interaction
+        @@interaction = Interaction.find(params[:id])
+        @iteration = Iteration.all
+    end
+    
+    def submit_interaction
+        @interaction = @@interaction
+        @iteration = Iteration.find(params[:id])
+        @new_interaction = @interaction.clone
+        @new_interaction.update_attribute(:iteration_id, @iteration.id)
+        respond_to do |format|
+        if @new_interaction.save
+            format.html {redirect_to view_report_iteration_path(@iteration.id), notice: "#{@new_interaction.interaction_name} copied to Iteration #{@iteration.iteration_number}, Drop #{@iteration.drop_number} "}
+        else
+            format.html {render :new }
+        end
+        end
+    end   
 end

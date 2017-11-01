@@ -11,7 +11,7 @@
 		    	<% @iteration.each do |iteration| %>
 		    		<td><%= iteration.iteration_number  %></td>
 		    		<td><%= iteration.drop_number %></td>
-		    		<td><%= link_to "Add to this iteration", submit_clone_iteration_path(iteration), class: "btn btn-primary" %> </td>
+		    		<td><%= link_to "Add to this iteration", submit_interaction_iteration_path(iteration), class: "btn btn-primary" %> </td>
 		    	</tbody>
 		    	
 		    	 <% end %>

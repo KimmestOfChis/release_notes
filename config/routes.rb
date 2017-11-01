@@ -6,6 +6,9 @@ Rails.application.routes.draw do
           get 'new_interaction'
           get 'view_report'
           get 'clone_defect'
+          get 'submit_clone'
+          get 'clone_interaction'
+          get 'submit_interaction'
       end
   end
   resources :defects
