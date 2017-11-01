@@ -108,14 +108,8 @@ class IterationsController < ApplicationController
     def submit_interaction
         @interaction = @@interaction
         @iteration = Iteration.find(params[:id])
-        @new_interaction = @interaction.clone
-        @new_interaction.update_attribute(:iteration_id, @iteration.id)
-        respond_to do |format|
-        if @new_interaction.save
-            format.html {redirect_to view_report_iteration_path(@iteration.id), notice: "#{@new_interaction.interaction_name} copied to Iteration #{@iteration.iteration_number}, Drop #{@iteration.drop_number} "}
-        else
-            format.html {render :new }
-        end
-        end
+        @new_inter = @interaction.dup
+        @new_inter.update_attribute(:iteration_id, @iteration.id)
+        redirect_to view_report_iteration_path(@iteration.id)
     end   
 end
