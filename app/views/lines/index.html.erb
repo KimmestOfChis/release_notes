@@ -37,7 +37,7 @@
                   <% if current_user.line_id === line.id %>
                       <td><%= button_to "Leave Line", leave_line_path(line.id), :method => :get, class: "btn btn-danger" %></td>
                   <% end %>
-                  <% if current_user.line_id.nil? && @user.where(:line_id => line.id, :role => 'Scrum Master').exists? %>
+                  <% if current_user.line_id.nil? && @user.where(:line_id => line.id, :role => 'Scrum Master').exists? && current_user.role === 'Scrum Master' %>
                       <td></td>
                   <% elsif current_user.line_id.nil? %>
                       <td><%= button_to "Join Line", add_to_line_path(line.id), :method => :get, class: "btn btn-primary" %></td>
